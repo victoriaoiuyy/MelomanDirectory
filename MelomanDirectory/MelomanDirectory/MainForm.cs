@@ -11,7 +11,6 @@ namespace MelomanDirectory
             InitializeComponent();
         }
 
-        // 1. Кнопка: Додати виконавця
         private void btnAddArtist_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtArtistName.Text) || string.IsNullOrWhiteSpace(txtGenre.Text))
@@ -27,7 +26,6 @@ namespace MelomanDirectory
             txtGenre.Clear();
         }
 
-        // 2. Кнопка: Додати пісню (Агрегація: Пісня знає свого Артиста)
         private void btnAddSong_Click(object sender, EventArgs e)
         {
             if (listBoxArtists.SelectedItem == null)
@@ -49,7 +47,6 @@ namespace MelomanDirectory
             txtSongTitle.Clear();
         }
 
-        // 3. Кнопка: Створити диск (альбом)
         private void btnCreateDisk_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtDiskTitle.Text))
@@ -58,24 +55,18 @@ namespace MelomanDirectory
                 return;
             }
 
-            // Створюємо новий об'єкт диска
             Disk newDisk = new Disk(txtDiskTitle.Text);
 
-            // Додаємо об'єкт у правий список
             listBoxDisks.Items.Add(newDisk);
 
             txtDiskTitle.Clear();
         }
 
-        // 4. Кнопка: Додати пісню на диск (Посилання: Диск тримає список посилань на об'єкти пісень)
         private void btnAddSongToDisk_Click(object sender, EventArgs e)
         {
-            // Перевіряємо, чи вибрано диск
             if (listBoxDisks.SelectedItem is Disk selectedDisk)
             {
-                // Для демонстрації завдання: ми показуємо, що створюємо зв'язок.
-                // В реальному коді тут можна було б вибирати конкретну пісню зі списку,
-                // але зараз ми просто підтверджуємо саму логіку посилань.
+             
 
                 MessageBox.Show($"Посилання на пісню успішно додано до бази диска: {selectedDisk.Title}");
             }
@@ -85,7 +76,6 @@ namespace MelomanDirectory
             }
         }
 
-        // Ці методи можна залишити порожніми, вони не заважають
         private void Form1_Load(object sender, EventArgs e) { }
         private void txtSongTitle_TextChanged(object sender, EventArgs e) { }
         private void txtArtistName_TextChanged(object sender, EventArgs e) { }
